@@ -8,10 +8,8 @@ var variableSummonerName = "epicchewy";
 
 $(function () 
 {
-	console.log("hi");
-	var path = REAL_SERVER + "/league";
-	//var variableSummonerName = "b3lik3t";
-	numberOfPages = 0;
+	console.log("hi " + variableSummonerName);
+	var path = REAL_SERVER;
 	$.ajax({
 	 	url: path,
 	 	data: { 
@@ -20,9 +18,9 @@ $(function ()
 	 	context: document.body,
 	 	crossDomain: true
 	}).done(function( reply ) {
-		console.log(reply);
+		console.log("reply " + reply);
 		// keys = Object.keys(reply);
 		// alert("done pulling shit bitch");
-		console.log("data pulled");
+		console.log("data apulled");
 	});	
 } );
