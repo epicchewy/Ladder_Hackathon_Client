@@ -8,6 +8,20 @@ var page_Name;
 
 var variableSummonerName = "";
 
+function loadToDatabase(){
+	var path2 = local_server;
+	$.ajax({
+		url: path2,
+		data:{
+			"player_data":playerData
+		},
+		context:document.body,
+		crossDomain:true
+	}).done(function(reply){
+		console.log("done pushing to database");
+	});
+}
+
 function getRank() 
 {
 	variableSummonerName = $("#summonername").val();
@@ -65,7 +79,7 @@ function storePersonData(){
 //google maps and location shit
 
 
-
 //databasing
 
+//moxtra client ttoqLOCzQWI client secret nQdWA78QQqg
 

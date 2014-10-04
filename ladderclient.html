@@ -4,9 +4,13 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
 <script type = "text/javascript" src="ladderclient.js"></script>
-<link type = "text/css" rel = "stylesheet" href="ladderclient.css"
-<head>
+<script src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script> -->
+<script src='https://cdn.firebase.com/js/client/1.1.0/firebase.js'></script>
 </head>
+<link type = "text/css" rel = "stylesheet" href="ladderclient.css">
+<head>
+	  
 
 <body>
 	<div data-role="page" id ="newPlayer" data-theme="a">
@@ -64,8 +68,12 @@
 				<a href="#newPlay" data-role="button" data-inline="true" data-theme="b" onclick="storeGameData()">Submit</a>
 		</div>
 	</div>
+
 	<div data-role="page" id ="collectiveData" data-theme="a">
-		<p>good shit getting here</p>
+		<div data-role = "header">
+			<h1>Location</h1>
+		</div>
+		<button onclick = "loadToDatabase()">Load to Parse</button>
 	</div>
 </body>
 
