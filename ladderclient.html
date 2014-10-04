@@ -3,17 +3,70 @@
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
-<script type="text/javascript" src="https://omlet.me/a/js/omlet.js"></script>
 <script type = "text/javascript" src="ladderclient.js"></script>
 <link type = "text/css" rel = "stylesheet" href="ladderclient.css"
 <head>
 </head>
 
 <body>
-	
+	<div data-role="page" id ="newPlayer" data-theme="a">
+		<div data-role = "header">
+			<h1>Localized Ladder</h1>
+		</div>	
+		<div data-role="main" class ="ui-content" id ="newPlayerMain" data-theme ="a">
+			<p>Welcome to the Luke's Localized Ladder. This app is for gamers to connect with players around their area and help stimulate competition. If you're a new player, press "New Player" to input your data into the database. If you just want to see the current ladder, press "Current Ladder" and specify a location. Enjoy!</p1>
+			<a href="#newPlay" class="ui-btn" onclick="clicked()">New Player</a>
+			<!-- <a href = "#" class = "ui-btn">Current Ladderr</a> -->
+		</div>
+	</div>
 
+	<div data-role = "page" id= "newPlay" data-theme="a">
+		<div data-role = "header">
+			<h1>New Player</h1>
+		</div>
+		<label for="select-game" class="select"><h1>Select a game:</h1></label>
+			<select name="select-game" id="select-game">
+				<option value=""></option>
+  				<option value="leagueoflegends">League of Legends</option>
+			</select>
+		<a href="#gameData" class="ui-btn">Enter Player Stats</a>
+		<div id="displayRank"></div>
+		<div data-role="fieldcontain">
+				<label for="age">Age:</label>
+				<input type="text" name="name" id="age" value="" />
+				<label for="grade">Grade:</label>
+				<input type="text" name="name" id="grade" value="" />
+				<label for="school">School:</label>
+				<input type="text" name="name" id="school" value="" />
+		</div>
+		<a href="#collectiveData" class="ui-btn" onclick="storePersonData()">Finish Stats!!!</a>
+	</div>
 
-
+	<div data-role = "page" id="gameData" data-theme="a">
+		<div data-role="header">
+			<h1>League of Legends</h1>
+		</div>
+		<div data-role ="main" class = "ui-content" id="leagueData">
+			<div data-role="fieldcontain">
+				<label for="summonername">Summoner Name:</label>
+				<input type="text" name="name" id="summonername" value="" />
+			</div>
+			
+			<div data-role="fieldcontain">
+				<label for="mainRole">Main Role:</label>
+					<input type="text" name="name" id="mainRole" value="" />
+				<label for="favChamp">Favorite Champ:</label>
+					<input type="text" name="name" id="favChamp" value="" />
+			</div>
+			<button id="searchButton" onclick="getRank()">Search Summoner</button>
+			<div id="displayRank2"></div>
+			<a href="#" data-role="button" data-inline="true">Cancel</a>
+				<a href="#newPlay" data-role="button" data-inline="true" data-theme="b" onclick="storeGameData()">Submit</a>
+		</div>
+	</div>
+	<div data-role="page" id ="collectiveData" data-theme="a">
+		<p>good shit getting here</p>
+	</div>
 </body>
 
 
