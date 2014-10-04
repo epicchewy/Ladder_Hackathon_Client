@@ -10,11 +10,14 @@ var variableSummonerName = "";
 
 function loadToDatabase(){
 	var path2 = local_server;
+	console.log(playerData);
 	$.ajax({
 		url: path2,
+		contentType: "application/json; charset=utf-8",
 		data:{
-			"player_data":playerData
+			'PlayerData': JSON.stringify(playerData) ,
 		},
+		dataType: "json",
 		context:document.body,
 		crossDomain:true
 	}).done(function(reply){
@@ -64,17 +67,35 @@ var playerData = {};
 
 function storeGameData(){
 	playerData["rank"] = rank;
+	
 	playerData["mainRole"] = $("#mainRole").val();
 	playerData["favChamp"] = $("#favChamp").val();
+	//checkChamp($("#favChamp").val());
+	
 	console.log(playerData);
 }
 
 function storePersonData(){
+	
 	playerData["age"] = $("#age").val();
 	playerData["grade"] = $("#grade").val();
 	playerData["school"] = $("#school").val();
 	console.log(playerData);
 }
+
+//going to implement drop down menus later for player role and favorite champion
+
+// function checkChamp(str){
+// 	var names = "Aatrox Ahri Akali Alistar Amumu Anivia Annie Ashe Blitzcrank Brand Braum Caitlyn Cassiopeia Cho'Gath Corki Darius Diana Dr.Mundo Draven Elize Evelynn Ezreal Fiddlesticks Fiora Fizz Galio Gangplank Garen Gnar Gragas Graves Hecarim Heimerdinger Irelia Janna JarvanIV Jax Jayce Jinx Karma Karthus Kassadin Katarina Kayle Kennen Kha'Zix Kog'Maw LeBlanc LeeSin Leona Lissandra Lucian LuLu Lux Malphite Malzahar Maokai MasterYi MissFortune Mordekaiser Morgana Nami Nasus Nautilus Nocturne Nunu Olaf Orianna Pantheon Poppy Quinn Rammus Renekton Rengar Riven Rumble Ryze Sejuani Shaco Shen Shyvanna Singed Sion Sivir Skarner Sona Soraka Swain Syndra Talon Taric Teemo Thresh Tristana Trundle Tryndamere Twitch Varus Vayne Veigar Vel'Koz Vi Viktor Vladimir Volibear Warwick Wukong Xerath XinZhao Yasuo Yorick Zac Zed Ziggs Zilean Zyra";
+// 	var newname = names.split(" ");
+// 	for(var i =0; i < newname.length; i++){
+// 		if($("#favChamp").val()){
+
+// 		}
+			
+// 	}
+// 	alert("Select a real champ");
+// }
 
 //google maps and location shit
 
