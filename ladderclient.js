@@ -3,7 +3,7 @@
 var REAL_SERVER = "http://shrouded-tundra-3022.herokuapp.com";
 var LOCAL_TEST_SERVER = "http://192.169.44.43:5000";
 var local_server = "http://localhost:5000";
-var database_path = "http://personabase.com/ladder/playerdata.php";
+var database_path = "http://personabase.com/ladder/viewdata.php";
 var page_path = LOCAL_TEST_SERVER;
 var page_Name;
 
@@ -11,7 +11,6 @@ var variableSummonerName = "";
 
 function loadToDatabase(){
 	var path2 = local_server;
-	console.log(playerData);
 	$.ajax({
 		url: database_path,
 		contentType: "application/json; charset=utf-8",
@@ -67,7 +66,8 @@ function displayRank(){
 var playerData = {};
 
 function storeGameData(){
-	playerData["rank"] = rank;
+	var rank_ = rank;
+	playerData["rank"] = rank_;
 	
 	playerData["mainRole"] = $("#mainRole").val();
 	playerData["favChamp"] = $("#favChamp").val();
