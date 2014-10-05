@@ -3,6 +3,7 @@
 var REAL_SERVER = "http://shrouded-tundra-3022.herokuapp.com";
 var LOCAL_TEST_SERVER = "http://192.169.44.43:5000";
 var local_server = "http://localhost:5000";
+var database_path = "http://personabase.com/ladder/playerdata.php";
 var page_path = LOCAL_TEST_SERVER;
 var page_Name;
 
@@ -12,7 +13,7 @@ function loadToDatabase(){
 	var path2 = local_server;
 	console.log(playerData);
 	$.ajax({
-		url: path2,
+		url: database_path,
 		contentType: "application/json; charset=utf-8",
 		data:{
 			'PlayerData': JSON.stringify(playerData) ,
@@ -99,7 +100,27 @@ function storePersonData(){
 
 //google maps and location shit
 
-
+$(document).on('pageinit', '#collectiveData', function() {
+        	console.log("locating");
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position){
+                    initialize(position.coords.latitude,position.coords.longitude);
+                });
+            }
+        });
+        function initialize(lat,lng) {
+        	console.log("initialiizng");
+            var latlng = new google.maps.LatLng(lat, lng);
+            var myOptions = {
+                zoom: 12,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+            console.log("Latitude: " + lat + "  Longitude: " + lng);
+            playerData["longitude"] = lng;
+            playerData["latitude"] = lat;
+        } 
 //databasing
 
 //moxtra client ttoqLOCzQWI client secret nQdWA78QQqg

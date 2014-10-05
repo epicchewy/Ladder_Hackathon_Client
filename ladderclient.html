@@ -71,29 +71,13 @@
 
 	<div data-role="page" id ="collectiveData" data-theme="a">
 		 <script type="text/javascript">
-        $(document).on('pageinit', '#collectiveData', function() {
-            if(navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position){
-                    initialize(position.coords.latitude,position.coords.longitude);
-                });
-            }
-        });
-        function initialize(lat,lng) {
-            var latlng = new google.maps.LatLng(lat, lng);
-            var myOptions = {
-                zoom: 8,
-                center: latlng,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-             $('#map_canvas').gmap('refresh');
-        } 
+        
     </script>
-   <!--  <div data-role="header">
+    <div data-role="header">
         <h1>Location</h1>
-    </div> -->
-    <div id="map_canvas"></div>
-		<!-- <button onclick = "loadToDatabase()">Load to Parse</button> -->
+    </div>
+    <div id="map_canvas" style = "height: 250px; width : 250px:"></div>
+		<button onclick = "loadToDatabase()">Load to Parse</button>
 	</div>
 
 	<div data-role = "page" id ="ladder" data-theme="a">
