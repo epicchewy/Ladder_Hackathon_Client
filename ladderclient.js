@@ -12,16 +12,16 @@ var variableSummonerName = "";
 function loadToDatabase(){
 	var path2 = local_server;
 	$.ajax({
-		url: database_path,
-		contentType: "application/json; charset=utf-8",
-		data:{
-			'PlayerData': JSON.stringify(playerData) ,
+	    type: 'GET',
+		url: 'http://personabase.com/ladder/playerdata.php',
+		data: {
+		'playerData' : playerData
 		},
-		dataType: "json",
-		context:document.body,
-		crossDomain:true
-	}).done(function(reply){
-		console.log("done pushing to database");
+		dataType: 'jsonp'
+		}).done(function(response){
+	        console.log(response);
+		}).fail(function(error){
+	        console.log(error.statusText);
 	});
 }
 
