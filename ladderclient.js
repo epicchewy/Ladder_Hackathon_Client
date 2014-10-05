@@ -129,22 +129,14 @@ function configureLadder(){
 	$("#ladderMain div").remove();
 	$("#ladderMain").append();
 	getByMileRadius();
-	console.log("2nd response " + players_MileRadius);
+	console.log(players_MileRadius);
+	for(key in players_MileRadius){
+
+	}
+	$("#ladderMain").trigger('create');
 }
 
 //going to implement drop down menus later for player role and favorite champion
-
-// function checkChamp(str){
-// 	var names = "Aatrox Ahri Akali Alistar Amumu Anivia Annie Ashe Blitzcrank Brand Braum Caitlyn Cassiopeia Cho'Gath Corki Darius Diana Dr.Mundo Draven Elize Evelynn Ezreal Fiddlesticks Fiora Fizz Galio Gangplank Garen Gnar Gragas Graves Hecarim Heimerdinger Irelia Janna JarvanIV Jax Jayce Jinx Karma Karthus Kassadin Katarina Kayle Kennen Kha'Zix Kog'Maw LeBlanc LeeSin Leona Lissandra Lucian LuLu Lux Malphite Malzahar Maokai MasterYi MissFortune Mordekaiser Morgana Nami Nasus Nautilus Nocturne Nunu Olaf Orianna Pantheon Poppy Quinn Rammus Renekton Rengar Riven Rumble Ryze Sejuani Shaco Shen Shyvanna Singed Sion Sivir Skarner Sona Soraka Swain Syndra Talon Taric Teemo Thresh Tristana Trundle Tryndamere Twitch Varus Vayne Veigar Vel'Koz Vi Viktor Vladimir Volibear Warwick Wukong Xerath XinZhao Yasuo Yorick Zac Zed Ziggs Zilean Zyra";
-// 	var newname = names.split(" ");
-// 	for(var i =0; i < newname.length; i++){
-// 		if($("#favChamp").val()){
-
-// 		}
-			
-// 	}
-// 	alert("Select a real champ");
-// }
 
 //google maps and location shit
 
@@ -174,4 +166,6 @@ $(document).on('pageinit', '#collectiveData', function() {
 //databasing
 
 //moxtra client ttoqLOCzQWI client secret nQdWA78QQqg
+
+
 
