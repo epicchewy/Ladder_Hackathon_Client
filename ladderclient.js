@@ -25,6 +25,22 @@ function loadToDatabase(){
 	});
 }
 
+function getFromDatabase(){
+	var path2 = local_server;
+	$.ajax({
+	    type: 'GET',
+		url: 'http://personabase.com/ladder/getplayer.php',
+		data: {
+		'summonername' : $("#summonername").val();
+		},
+		dataType: 'jsonp'
+		}).done(function(response){
+	        console.log(response);
+		}).fail(function(error){
+	        console.log(error.statusText);
+	});
+}
+
 function getRank() 
 {
 	variableSummonerName = $("#summonername").val();
@@ -67,6 +83,7 @@ var playerData = {};
 
 function storeGameData(){
 	var rank_ = rank;
+	playerData["name"] = variableSummonerName;
 	playerData["rank"] = rank_;
 	
 	playerData["mainRole"] = $("#mainRole").val();
