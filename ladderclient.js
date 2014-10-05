@@ -68,7 +68,7 @@ function getRank()
 {
 	variableSummonerName = $("#summonername").val();
 	console.log("hi " + variableSummonerName);
-	var path = REAL_SERVER + "/league";
+	var path = local_server + "/league";
 	$.ajax({
 	 	url: path,
 	 	data: { 
@@ -113,29 +113,45 @@ function storeGameData(){
 	playerData["mainRole"] = $("#mainRole").val();
 	playerData["favChamp"] = $("#favChamp").val();
 	//checkChamp($("#favChamp").val());
-	
-	console.log(playerData);
 }
 
 function storePersonData(){
 	playerData["age"] = $("#age").val();
 	playerData["grade"] = $("#grade").val();
 	playerData["school"] = $("#school").val();
-	console.log(playerData);
 }
 
 function configureLadder(){
 	number_miles = $("#miles").val();
 	$("#ladderMain div").remove();
-	$("#ladderMain").append();
 	getByMileRadius();
-	console.log(players_MileRadius);
-	for(key in players_MileRadius){
-
-	}
-	$("#ladderMain").trigger('create');
+	displayLadder(players_MileRadius);
 }
 
+function displayLadder(data){
+	for(key in data){
+		if(data[key]["name"]=== undefined){
+			break;
+		}else{
+			console.log("loading");
+			$("#ladderList").append('<li data-role="collapsible" id = "ID"'+key+'>'+ data[key]["summoner_name"] +'</li>');
+			$("#id" + key).append('<table data-role="table" id ="pieceTable" data-mode = "reflow"><thead><tr id="pieceHead'+key+'"></tr></thead><tbody><tr id="pieceBody"'+key+'></tr></tbody></table>');
+			$("#pieceHead" + key).append('<td>Rank</td>');
+			$("#pieceHead" + key).append('<td>Main Role</td>');
+			$("#pieceHead" + key).append('<td>Favorite Champ</td>');
+			$("#pieceHead" + key).append('<td>Age</td>');
+			$("#pieceHead" + key).append('<td>Grade</td>');
+			$("#pieceHead" + key).append('<td>School</td>');
+			$("#pieceBody" + key).append('<td>'+ data[key]["rank"] +'</td>');
+			$("#pieceBody" + key).append('<td>'+ data[key]["mainRole"] +'</td>');
+			$("#pieceBody" + key).append('<td>'+ data[key]["favChamp"] +'</td>');
+			$("#pieceBody" + key).append('<td>'+ data[key]["age"] +'</td>');
+			$("#pieceBody" + key).append('<td>'+ data[key]["grade"] +'</td>');
+			$("#pieceBody" + key).append('<td>'+ data[key]["school"] +'</td>');
+		}
+	}
+	$("#pieceTable").trigger('create');
+}
 //going to implement drop down menus later for player role and favorite champion
 
 //google maps and location shit
