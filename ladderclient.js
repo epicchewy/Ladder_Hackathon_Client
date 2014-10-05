@@ -69,7 +69,7 @@ function getRank()
 {
 	variableSummonerName = $("#summonername").val();
 	console.log("hi " + variableSummonerName);
-	var path = local_server + "/league";
+	var path = REAL_SERVER + "/league";
 	$.ajax({
 	 	url: path,
 	 	data: { 
