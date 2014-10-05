@@ -137,9 +137,9 @@ function displayLadder(data){
 		// 	break;
 		// }else{
 			console.log("loading");
-			console.log(data[key] + " hey there");
-			$("#ladderList").append('<li data-role="collapsible" id = "ID'+key+'">'+ data[key]["summoner_name"] +'</li>');
-			$("#ID" + key).append('<table data-role="table" id ="pieceTable" data-mode = "reflow"><thead><tr id="pieceHead'+key+'"></tr></thead><tbody><tr id="pieceBody"'+key+'></tr></tbody></table>');
+			console.log(data[key]);
+			$("#ladderList").append('<li data-role="collapsible" id = "ID'+key+'"><h1>'+ data[key]["summoner_name"] +'</h1></li>');
+			$("#ID" + key).append('<table data-role="table" id ="pieceTable" data-mode = "reflow"><thead><tr id="pieceHead'+key+'"></tr></thead><tbody><tr id="pieceBody'+key+'"></tr></tbody></table>');
 			$("#pieceHead" + key).append('<td>Rank</td>');
 			$("#pieceHead" + key).append('<td>Main Role</td>');
 			$("#pieceHead" + key).append('<td>Favorite Champ</td>');
@@ -154,7 +154,6 @@ function displayLadder(data){
 			$("#pieceBody" + key).append('<td>'+ data[key]["school"] +'</td>');
 		index++;
 	}
-	$("#ladderList").listview('refresh');
 	$("#ladderMain").trigger('create');
 }
 //going to implement drop down menus later for player role and favorite champion
