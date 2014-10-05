@@ -8,6 +8,10 @@ var page_path = LOCAL_TEST_SERVER;
 var page_Name;
 
 var variableSummonerName = "";
+var number_miles;
+var latitude;
+var longitude;
+var players_MileRadius = {};
 
 function loadToDatabase(){
 	var path2 = local_server;
@@ -36,6 +40,25 @@ function getFromDatabase(){
 		dataType: 'jsonp'
 		}).done(function(response){
 	        console.log(response);
+		}).fail(function(error){
+	        console.log(error.statusText);
+	});
+}
+
+function getByMileRadius(){
+	var path2 = local_server;
+	$.ajax({
+	    type: 'GET',
+		url: 'http://personabase.com/ladder/getByLocation.php',
+		data: { 
+			'longitude' : longitude,
+			'latitude' : latitude,
+			'radius' : number_miles
+		},
+		dataType: 'jsonp'
+		}).done(function(response){
+	        console.log(response);
+	        players_MileRadius = response;
 		}).fail(function(error){
 	        console.log(error.statusText);
 	});
@@ -95,11 +118,18 @@ function storeGameData(){
 }
 
 function storePersonData(){
-	
 	playerData["age"] = $("#age").val();
 	playerData["grade"] = $("#grade").val();
 	playerData["school"] = $("#school").val();
 	console.log(playerData);
+}
+
+function configureLadder(){
+	number_miles = $("#miles").val();
+	$("#ladderMain div").remove();
+	$("#ladderMain").append();
+	getByMileRadius();
+	console.log("2nd response " + players_MileRadius);
 }
 
 //going to implement drop down menus later for player role and favorite champion
@@ -136,6 +166,8 @@ $(document).on('pageinit', '#collectiveData', function() {
             };
             var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
             console.log("Latitude: " + lat + "  Longitude: " + lng);
+            longitude = lng;
+            latitude = lat;
             playerData["longitude"] = lng;
             playerData["latitude"] = lat;
         } 
