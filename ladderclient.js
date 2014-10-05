@@ -126,7 +126,7 @@ function configureLadder(){
 	console.log('configuring ladder...');
 	number_miles = $("#miles").val();
 	getByMileRadius();
-	
+	$("#mile_input").remove();
 }
 
 function displayLadder(data){
@@ -137,7 +137,6 @@ function displayLadder(data){
 		// 	break;
 		// }else{
 			console.log("loading");
-			console.log(data[key]);
 			$("#ladderList").append('<li data-role="collapsible" id = "ID'+key+'"><h1>'+ data[key]["summoner_name"] +'</h1></li>');
 			$("#ID" + key).append('<table data-role="table" id ="pieceTable" data-mode = "reflow"><thead><tr id="pieceHead'+key+'"></tr></thead><tbody><tr id="pieceBody'+key+'"></tr></tbody></table>');
 			$("#pieceHead" + key).append('<td>Rank</td>');
@@ -152,7 +151,7 @@ function displayLadder(data){
 			$("#pieceBody" + key).append('<td>'+ data[key]["age"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["grade"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["school"] +'</td>');
-		index++;
+		
 	}
 	$("#ladderMain").trigger('create');
 }
