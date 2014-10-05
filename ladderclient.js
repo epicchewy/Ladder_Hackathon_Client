@@ -31,7 +31,7 @@ function getFromDatabase(){
 	    type: 'GET',
 		url: 'http://personabase.com/ladder/getplayer.php',
 		data: {
-		'summonername' : $("#summonername").val();
+		'summonername' : $("#summonername").val()
 		},
 		dataType: 'jsonp'
 		}).done(function(response){
@@ -83,6 +83,7 @@ var playerData = {};
 
 function storeGameData(){
 	var rank_ = rank;
+	variableSummonerName = $("#summonername").val();
 	playerData["name"] = variableSummonerName;
 	playerData["rank"] = rank_;
 	
