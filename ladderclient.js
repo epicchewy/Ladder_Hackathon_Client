@@ -59,6 +59,7 @@ function getByMileRadius(){
 		}).done(function(response){
 	        console.log(response);
 	        players_MileRadius = response;
+	        displayLadder(players_MileRadius);
 		}).fail(function(error){
 	        console.log(error.statusText);
 	});
@@ -122,20 +123,23 @@ function storePersonData(){
 }
 
 function configureLadder(){
+	console.log('configuring ladder...');
 	number_miles = $("#miles").val();
-	$("#ladderMain div").remove();
 	getByMileRadius();
-	displayLadder(players_MileRadius);
+	
 }
 
 function displayLadder(data){
+	var index = 0;
 	for(key in data){
-		if(data[key]["name"]=== undefined){
-			break;
-		}else{
+
+		// if(data[key]["name"]== undefined){
+		// 	break;
+		// }else{
 			console.log("loading");
-			$("#ladderList").append('<li data-role="collapsible" id = "ID"'+key+'>'+ data[key]["summoner_name"] +'</li>');
-			$("#id" + key).append('<table data-role="table" id ="pieceTable" data-mode = "reflow"><thead><tr id="pieceHead'+key+'"></tr></thead><tbody><tr id="pieceBody"'+key+'></tr></tbody></table>');
+			console.log(data[key] + " hey there");
+			$("#ladderList").append('<li data-role="collapsible" id = "ID'+key+'">'+ data[key]["summoner_name"] +'</li>');
+			$("#ID" + key).append('<table data-role="table" id ="pieceTable" data-mode = "reflow"><thead><tr id="pieceHead'+key+'"></tr></thead><tbody><tr id="pieceBody"'+key+'></tr></tbody></table>');
 			$("#pieceHead" + key).append('<td>Rank</td>');
 			$("#pieceHead" + key).append('<td>Main Role</td>');
 			$("#pieceHead" + key).append('<td>Favorite Champ</td>');
@@ -148,9 +152,10 @@ function displayLadder(data){
 			$("#pieceBody" + key).append('<td>'+ data[key]["age"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["grade"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["school"] +'</td>');
-		}
+		index++;
 	}
-	$("#pieceTable").trigger('create');
+	$("#ladderList").listview('refresh');
+	$("#ladderMain").trigger('create');
 }
 //going to implement drop down menus later for player role and favorite champion
 
@@ -178,7 +183,7 @@ $(document).on('pageinit', '#collectiveData', function() {
             latitude = lat;
             playerData["longitude"] = lng;
             playerData["latitude"] = lat;
-        } 
+} 
 //databasing
 
 //moxtra client ttoqLOCzQWI client secret nQdWA78QQqg
