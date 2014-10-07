@@ -160,6 +160,7 @@ function displayLadder(data){
 //google maps and location shit
 
 $(document).on('pageinit', '#collectiveData', function() {
+		alert("Locating position...");
         	console.log("locating");
             if(navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position){
@@ -168,10 +169,11 @@ $(document).on('pageinit', '#collectiveData', function() {
             }
         });
         function initialize(lat,lng) {
+        	alert("Position found!");
         	console.log("initialiizng");
             var latlng = new google.maps.LatLng(lat, lng);
             var myOptions = {
-                zoom: 12,
+                zoom: 18,
                 center: latlng,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
