@@ -182,7 +182,6 @@ $(document).on('pageinit', '#collectiveData', function() {
 } 
 //databasing
 
-//moxtra client ttoqLOCzQWI client secret nQdWA78QQqg
 
 
 
