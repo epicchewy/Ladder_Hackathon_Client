@@ -92,9 +92,6 @@ function getRank()
 var ID  = 0;
 var rank;
 //ui work
-function clicked(){
-	console.log("clicked");
-}
 function displayRank(){
 	console.log("displaying");
 	$("#displayRank").append('<table data-role="table" id ="rankTable" data-mode = "reflow"><thead><tr id="rankTableHead""><td>Rank:  </td></tr></thead><tbody><tr id="rankTableBody"><td>'+ rank +'</td></tr></tbody></table>');
