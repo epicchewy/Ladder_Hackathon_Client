@@ -11,8 +11,8 @@ var variableSummonerName = "";
 var number_miles;
 var latitude;
 var longitude;
-var players_MileRadius = {};
-
+var players_MileRadius = [];
+var email_list = {};
 function loadToDatabase(){
 	var path2 = local_server;
 	$.ajax({
@@ -117,6 +117,7 @@ function storePersonData(){
 	playerData["age"] = $("#age").val();
 	playerData["grade"] = $("#grade").val();
 	playerData["school"] = $("#school").val();
+	playerData["email"] = $("#email").val();
 }
 
 function configureLadder(){
@@ -131,26 +132,36 @@ function displayLadder(data){
 	for(key in data){
 		if(key =="message"){
 			break;
-		}else{
+		}
+		if(key === undefined){
+			break;
+		}
+		else{
 			console.log("loading");
-			$("#ladderList").append('<li data-role="collapsible" id = "ID'+key+'"><h1>'+ data[key]["summoner_name"] +'</h1></li>');
+			$("#ladderList").append('<li data-role="collapsible" id = "ID'+key+'"><h1>'+ data[key]["summoner_name"] +'  ' + data[key]["rank"] + '</h1></li>');
 			$("#ID" + key).append('<table data-role="table" id ="pieceTable" data-mode = "reflow"><thead><tr id="pieceHead'+key+'"></tr></thead><tbody><tr id="pieceBody'+key+'"></tr></tbody></table>');
-			$("#pieceHead" + key).append('<td>Rank</td>');
 			$("#pieceHead" + key).append('<td>Main Role</td>');
 			$("#pieceHead" + key).append('<td>Favorite Champ</td>');
 			$("#pieceHead" + key).append('<td>Age</td>');
 			$("#pieceHead" + key).append('<td>Grade</td>');
 			$("#pieceHead" + key).append('<td>School</td>');
-			$("#pieceBody" + key).append('<td>'+ data[key]["rank"] +'</td>');
+			$("#pieceHead" + key).append('<td>Email</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["mainRole"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["favChamp"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["age"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["grade"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["school"] +'</td>');
-		
+			$("#pieceBody" + key).append('<td id ="email'+key+'">'+ data[key]["email"] +'</td>');
+			var current_email = $('#email'+key).val();
+			$("ID" + key).append('<button class = "ui-btn" onclick = "addToList(current_email)">Add To Chat</button>');
+		}
+		$("#ladderMain").trigger('create');
 	}
-	$("#ladderMain").trigger('create');
+	$("#ladderMain").append('<button class = "ui-btn" id = "chatButton" onclick = "startChat()">Start Chat!!!</button>');
 }
+function addToList(sttr){
+	email_list.push(str);
+	console.log(email_list);
 }
 //going to implement drop down menus later for player role and favorite champion
 
@@ -182,34 +193,34 @@ $(document).on('pageinit', '#collectiveData', function() {
 } 
 function startChat(){
 	console.log("ready");
-var options = {
-    iframe: false,
-    tagid4iframe: "#chatFrame",
-    iframewidth: "920px",
-    iframeheight: "650px",
-    autostart_meet: false,
-    autostart_note: false,
-    start_chat: function(event) {
-        alert("Chat started session Id: " + event.session_id);
-    },
-    start_meet: function(event) {
-        alert("Meet started session key: " + event.session_key + " session id: " + event.session_id);
-    },
-    end_meet: function(event) {
-        alert("Meet end event");
-    },
-    invite_member: function(event) {
-        alert("Invite member into binder Id: " + event.binder_id);
-    },
-    request_note: function(event) {
-        alert("Note start request");
-    },
-    error: function(event) {
-        alert("Chat error code: " + event.error_code + " error message: " + event.error_message);
-    }
-};
-Moxtra.chat(options);
-
+	var options = {
+		emails: email_list,
+	    iframe: false,
+	    tagid4iframe: "#chatFrame",
+	    iframewidth: "920px",
+	    iframeheight: "650px",
+	    autostart_meet: false,
+	    autostart_note: false,
+	    start_chat: function(event) {
+	        alert("Chat started session Id: " + event.session_id);
+	    },
+	    start_meet: function(event) {
+	        alert("Meet started session key: " + event.session_key + " session id: " + event.session_id);
+	    },
+	    end_meet: function(event) {
+	        alert("Meet end event");
+	    },
+	    invite_member: function(event) {
+	        alert("Invite member into binder Id: " + event.binder_id);
+	    },
+	    request_note: function(event) {
+	        alert("Note start request");
+	    },
+	    error: function(event) {
+	        alert("Chat error code: " + event.error_code + " error message: " + event.error_message);
+	    }
+	};
+	Moxtra.chat(options);
 }
 //databasing
 
