@@ -12,7 +12,10 @@ var number_miles;
 var latitude;
 var longitude;
 var players_MileRadius = [];
-var email_list = {};
+var email_list = ["chui.luke99@gmail.com", "chui.luke99@outlook.com"];
+$(function(){
+	console.log("emails "+ email_list);
+});
 function loadToDatabase(){
 	var path2 = local_server;
 	$.ajax({
@@ -159,7 +162,7 @@ function displayLadder(data){
 	}
 	$("#ladderMain").append('<button class = "ui-btn" id = "chatButton" onclick = "startChat()">Start Chat!!!</button>');
 }
-function addToList(sttr){
+function addToList(str){
 	email_list.push(str);
 	console.log(email_list);
 }
@@ -193,8 +196,10 @@ $(document).on('pageinit', '#collectiveData', function() {
 } 
 function startChat(){
 	console.log("ready");
+	console.log("emailss");
+	console.log(email_list);
 	var options = {
-		emails: email_list,
+		email: email_list,
 	    iframe: false,
 	    tagid4iframe: "#chatFrame",
 	    iframewidth: "920px",
