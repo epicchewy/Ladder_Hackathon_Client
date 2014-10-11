@@ -92,19 +92,15 @@
 		<div data-role = "header">
 			<h1>Local Ladder</h1>
 		</div>
-		<div data-role="fieldcontain" id="mile_input">
+		<div data-role="fieldcontain" id="mile_input" style ="text-align:center;">
    				<label for="miles">Number of Miles:</label>
-   				<input type="text" name="miles" id="miles" value=""/> 
-   				<br>
-   				<button class = "ui-btn" id="GO" onclick="configureLadder()">Go!</button>
+   				<input type="text" name="miles" id="miles" value=""/> 				
 		</div>	
+		<button class = "ui-btn" id="GO" onclick="configureLadder()" >Go!</button>
 		<div data-role="main" class = "ui-content" id = "ladderMain">
 			
 			<ul data-role = "listview" data-inset = "true" data-theme ="a" id ="ladderList">
 			</ul>
-			
-
-			<!-- andrew, output data onto this div here ill format the rest out a list of players within a three mile radius your house you can create a bunch of randos and throw them onto the server o yes and can you provide some methods for me so i can understand how the database shit works-->
 		</div>
 	</div>
 </body>

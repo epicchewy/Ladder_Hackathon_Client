@@ -128,15 +128,17 @@ function configureLadder(){
 	number_miles = $("#miles").val();
 	getByMileRadius();
 	$("#mile_input").remove();
+	$("#GO").remove();
 }
 
 function displayLadder(data){
+	$("#ladderList li").remove();
 	var index = 0;
 	for(key in data){
 		if(key =="message"){
 			break;
 		}
-		if(key === undefined){
+		if(data[key]["rank"] === null){
 			break;
 		}
 		else{
@@ -160,6 +162,7 @@ function displayLadder(data){
 		}
 		$("#ladderMain").trigger('create');
 	}
+	//$("#ladderMain").append('<')
 	$("#ladderMain").append('<button class = "ui-btn" id = "chatButton" onclick = "startChat()">Start Chat!!!</button>');
 }
 function addToList(str){
@@ -195,7 +198,7 @@ $(document).on('pageinit', '#collectiveData', function() {
             playerData["latitude"] = lat;
 } 
 function startChat(){
-	console.log("ready");
+	console.log("ready emails");
 	console.log("emailss");
 	console.log(email_list);
 	var options = {
