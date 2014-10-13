@@ -12,7 +12,7 @@ var number_miles;
 var latitude;
 var longitude;
 var players_MileRadius = [];
-var email_list = ["chui.luke99@gmail.com", "mfarid1996@gmail.com"];
+var email_list = [];
 $(function(){
 	console.log("emails "+ email_list);
 });
@@ -121,6 +121,7 @@ function storePersonData(){
 	playerData["grade"] = $("#grade").val();
 	playerData["school"] = $("#school").val();
 	playerData["email"] = $("#email").val();
+	console.log(playerData["email"]);
 }
 
 function configureLadder(){
@@ -156,9 +157,10 @@ function displayLadder(data){
 			$("#pieceBody" + key).append('<td>'+ data[key]["age"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["grade"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["school"] +'</td>');
-			$("#pieceBody" + key).append('<td id ="email'+key+'">'+ data[key]["email"] +'</td>');
 			var current_email = $('#email'+key).val();
-			$("ID" + key).append('<button class = "ui-btn" onclick = "addToList(current_email)">Add To Chat</button>');
+			$("#pieceBody" + key).append('<td id ="email'+key+'"><a href="" onclick="addToList(current_email)">'+ data[key]["email"] +'</a></td>');
+			
+			//$("ID" + key).append('<button class = "ui-btn" onclick = "addToList(current_email)">Add To Chat</button>');
 		}
 		$("#ladderMain").trigger('create');
 	}
