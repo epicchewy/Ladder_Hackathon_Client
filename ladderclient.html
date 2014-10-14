@@ -12,6 +12,49 @@
 	  
 
 <body>
+	<div data-role = "page" id = "loginPage" data-theme ="a">
+		<div data-role = "header">
+			<h1>The Localized Ladder!</h1>
+		</div>	
+		<div data-role ="content" id ="loginContent" data-theme ="a">
+			<h1><center>Welcome.</center></h1>
+			<header><center>If you do now have an account, press here to <a href = "#signUpPage" id = "signUpLink" onclick = "signUp()">SIGN UP!</center></a><header>
+
+			<div data-role="fieldcontain">
+				<label for="email">Email:</label>
+				<input type="text" name="name" id="email" value="" />
+
+				<br><br>
+
+				<label for="password">Password:</label>
+				<input type="text" name="name" id="password" value="" />
+
+		</div>
+
+		<a href = "#newPlayer" class = "ui-btn" id ="loginBtn" onclick = "login()">Login</a>
+
+		</div>
+	</div>
+	<div data-role = "page" id = "signUpPage" data-theme = "a">
+		<div data-role = "header">
+			<h1>Sign Up</h1>
+		</div>
+		<div data-role = "content" id = "signUpContent" data-theme ="a">
+			<div data-role="fieldcontain">
+				<label for="name">Name:</label>
+				<input type = "text" name = "name" id = "name" value="" />
+				<label for="email">Email:</label>
+				<input type="text" name="name" id="email" value="" />
+
+				<br><br>
+
+				<label for="password">Password:</label>
+				<input type="text" name="name" id="password" value="" />
+
+			</div>
+		</div>
+		<a href = "#loginPage" class = "ui-btn" id = "signUpBtn" onclick = "signup()">Sign UP!</a>
+	</div>
 	<div data-role="page" id ="newPlayer" data-theme="a">
 		<div data-role = "header">
 			<h1>Localized Ladder</h1>
@@ -45,7 +88,7 @@
 		<a href="#gameData" class="ui-btn">Enter Player Stats</a>
 		<div id="displayRank"></div>
 		<div data-role="fieldcontain">
-				<label for="school">Email:</label>
+				<label for="email">Email:</label>
 				<input type="text" name="name" id="email" value="" />
 				<label for="age">Age:</label>
 				<input type="text" name="name" id="age" value="" />
