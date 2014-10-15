@@ -80,20 +80,22 @@
 		<div data-role = "header">
 			<h1>New Player</h1>
 		</div>
-		<label for="select-game" class="select"><h1>Select a game:</h1></label>
-			<select name="select-game" id="select-game">
-				<option value=""></option>
-  				<option value="leagueoflegends">League of Legends</option>
-			</select>
-		<a href="#gameData" class="ui-btn">Enter Player Stats</a>
-		<div id="displayRank"></div>
-		<div data-role="fieldcontain">
-				<label for="age">Age:</label>
-				<input type="text" name="name" id="age" value="" />
-				<label for="grade">Grade:</label>
-				<input type="text" name="name" id="grade" value="" />
-				<label for="school">School:</label>
-				<input type="text" name="name" id="school" value="" />
+			<div data-role = "main" class ="ui-content" data-theme ="b">
+			<label for="select-game" class="select"><h1><center>Select a game:</center></h1></label>
+				<select name="select-game" id="select-game">
+					<option value=""></option>
+	  				<option value="leagueoflegends">League of Legends</option>
+				</select>
+			<a href="#gameData" class="ui-btn">Enter Player Stats</a>
+			<div id="displayRank"></div>
+			<div data-role="fieldcontain">
+					<label for="age">Age:</label>
+					<input type="text" name="name" id="age" value="" />
+					<label for="grade">Grade:</label>
+					<input type="text" name="name" id="grade" value="" />
+					<label for="school">School:</label>
+					<input type="text" name="name" id="school" value="" />
+			</div>
 		</div>
 		<a href="#collectiveData" class="ui-btn" onclick="storePersonData()">Finish Stats!!!</a>
 	</div>
@@ -126,7 +128,7 @@
         <h1>Location</h1>
     </div>
     <div id="map_canvas" style = "height: 250px; width : 250px:"></div>
-    	<input id = "pac-input" class = "controls" type = "text" placeholder= "Search...">
+    	<!-- <input id = "pac-input" class = "controls" type = "text" placeholder= "Search..."> -->
 		<a href="#ladder" class="ui-btn" onclick="loadToDatabase()">Ladder Up!!!</a>
 	</div>
 
