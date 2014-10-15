@@ -131,8 +131,10 @@ function configureLadder(){
 	$("#mile_input").remove();
 	$("#GO").remove();
 }
-
+var current_email = "";
 function displayLadder(data){
+	
+	console.log("current");
 	$("#ladderList li").remove();
 	var index = 0;
 	for(key in data){
@@ -157,7 +159,7 @@ function displayLadder(data){
 			$("#pieceBody" + key).append('<td>'+ data[key]["age"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["grade"] +'</td>');
 			$("#pieceBody" + key).append('<td>'+ data[key]["school"] +'</td>');
-			var current_email = $('#email'+key).val();
+			current = data[key]["email"];//$('#email'+key).val();
 			$("#pieceBody" + key).append('<td id ="email'+key+'"><a href="" onclick="addToList(current_email)">'+ data[key]["email"] +'</a></td>');
 			
 			//$("ID" + key).append('<button class = "ui-btn" onclick = "addToList(current_email)">Add To Chat</button>');
@@ -233,3 +235,9 @@ function startChat(){
 	Moxtra.chat(options);
 }
 //databasing
+function login(){
+
+}
+function signup(){
+
+}
