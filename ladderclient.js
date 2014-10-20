@@ -1,5 +1,5 @@
 //riot and other server work
-
+//commit again
 var REAL_SERVER = "http://shrouded-tundra-3022.herokuapp.com";
 var LOCAL_TEST_SERVER = "http://192.169.44.43:5000";
 var local_server = "http://localhost:5000";
