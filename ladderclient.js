@@ -71,6 +71,7 @@ function getByMileRadius(){
 function getRank() 
 {
 	variableSummonerName = $("#summonername").val();
+	variableSummonerName = removeSpace(variableSummonerName);
 	console.log("hi " + variableSummonerName);
 	var path = REAL_SERVER + "/league";
 	$.ajax({
@@ -92,6 +93,22 @@ function getRank()
 		displayRank();
 	});	
 }
+
+function checkGame(){
+	var str = $("#select-game option:selected").text();
+	if(str == "League of Legends"){
+		$.mobile.changePage( "#gameDataLeague", { transition: "slideup"} );
+	}else{
+		alert("Sorry, page not up yet.");
+	}
+}
+
+function removeSpace(str){
+	str = str.replace(/\s/g, '');
+	str = str.toLowerCase();
+	return str;
+}
+
 var ID  = 0;
 var rank;
 //ui work
@@ -236,7 +253,7 @@ function startChat(){
 }
 //databasing
 function login(){
-	
+
 }
 function signup(){
 

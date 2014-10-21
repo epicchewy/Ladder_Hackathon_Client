@@ -88,8 +88,20 @@
 				<select name="select-game" id="select-game">
 					<option value=""></option>
 	  				<option value="leagueoflegends">League of Legends</option>
+	  				<option value="schots">Starcraft 2: HOTS</option>
+	  				<option value="dotatwo">DOTA 2</option>
+	  				<option value="schots">World of Warcraft</option>
+	  				<option value="pad">Puzzles and Dragons</option>
+	  				<option value="pokemon">Pokemon</option>
+	  				<option value="magic">Magic the Gathering</option>
+	  				<option value="csgo">CS:GO</option>
+	  				<option value="tftwo">Team Fortress 2</option>
+	  				<option value="arcade">Arcade Games</option>
+	  				<option value="xbox">XBOX Games</option>
+	  				<option value="psfour">PS4 Games</option>
+	  				<option value="wii">Wii Games</option>
 				</select>
-			<a href="#gameData" class="ui-btn">Enter Player Stats</a>
+			<a href="" class="ui-btn" onclick ="checkGame()">Enter Player Stats</a>
 			<div id="displayRank"></div>
 			<div data-role="fieldcontain">
 					<label for="age">Age:</label>
@@ -103,7 +115,7 @@
 		<a href="#collectiveData" class="ui-btn" onclick="storePersonData()">Finish Stats!!!</a>
 	</div>
 
-	<div data-role = "page" id="gameData" data-theme="a">
+	<div data-role = "page" id="gameDataLeague" data-theme="a">
 		<div data-role="header">
 			<h1>League of Legends</h1>
 		</div>
@@ -115,14 +127,17 @@
 			
 			<div data-role="fieldcontain">
 				<label for="mainRole">Main Role:</label>
-					<input type="text" name="name" id="mainRole" value="" />
+				<input type="text" name="name" id="mainRole" value="" />
+			</div>
+
+			<div data-role = "fieldcontain">
 				<label for="favChamp">Favorite Champ:</label>
 					<input type="text" name="name" id="favChamp" value="" />
 			</div>
 			<button id="searchButton" onclick="getRank()">Search Summoner</button>
 			<div id="displayRank2"></div>
-			<a href="#" data-role="button" data-inline="true">Cancel</a>
-				<a href="#newPlay" data-role="button" data-inline="true" data-theme="b" onclick="storeGameData()">Submit</a>
+			<center><a href="#" data-role="button" data-inline="true" data-rel = "back">Cancel</a>
+				<a href="#newPlay" data-role="button" data-inline="true" data-theme="b" onclick="storeGameData()">Submit</a></center>
 		</div>
 	</div>
 
