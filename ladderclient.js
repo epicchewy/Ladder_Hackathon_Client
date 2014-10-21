@@ -96,6 +96,7 @@ function getRank()
 
 function checkGame(){
 	var str = $("#select-game option:selected").text();
+	$("#gameHeader").text(str);
 	if(str == "League of Legends"){
 		$.mobile.changePage( "#gameDataLeague", { transition: "slideup"} );
 	}else{
