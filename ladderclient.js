@@ -6,7 +6,7 @@ var local_server = "http://localhost:5000";
 var database_path = "http://personabase.com/ladder/viewdata.php";
 var page_path = LOCAL_TEST_SERVER;
 var page_Name;
-
+//init commit
 var variableSummonerName = "";
 var number_miles;
 var latitude;
