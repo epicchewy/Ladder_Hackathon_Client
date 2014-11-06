@@ -73,7 +73,7 @@ function getRank()
 	variableSummonerName = $("#summonername").val();
 	variableSummonerName = removeSpace(variableSummonerName);
 	console.log("hi " + variableSummonerName);
-	var path = REAL_SERVER + "/league";
+	var path = local_server + "/league";
 	$.ajax({
 	 	url: path,
 	 	data: { 
@@ -87,6 +87,7 @@ function getRank()
 		}
 		console.log(reply);
 		ID = reply["ID"];
+		console.log(ID); 
 		console.log(reply["summoner_rank"][ID][0]["tier"] + "  " + reply["summoner_rank"][ID][0]["entries"][0]["division"]);
 		rank = reply["summoner_rank"][ID][0]["tier"] + "  " + reply["summoner_rank"][ID][0]["entries"][0]["division"];
 		console.log("data apulled");
